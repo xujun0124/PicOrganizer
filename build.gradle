@@ -1,4 +1,28 @@
-apply plugin:java
+plugins {
+    id 'java'
+}
+
+wrapper {
+    gradleVersion = '2.4'
+    archiveBase = 'GRADLE_USER_HOME'
+    archivePath = 'wrapper/dists'
+    distributionBase = 'GRADLE_USER_HOME'
+    distributionPath = 'wrapper/dists'
+    distributionUrl = 'https://services.gradle.org/distributions/gradle-2.4-all.zip'
+}
+
+task hello{
+	logger.quiet('quiet==JOE.')
+	logger.error('error==JOE.')
+	logger.warn('warn==JOE.')
+	logger.lifecycle('lifecycle==JOE.')
+	logger.info('info==JOE.')
+	logger.debug('debug==JOE.')
+
+    doLast{
+        println'Hello World!'
+    }
+}
 
 sourceSets{
 	main.java.srcDir "src/main"

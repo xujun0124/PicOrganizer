@@ -139,21 +139,28 @@ public class PicOrganizer {
 
 	public static void main(String[] args) throws IOException {
 
-        System.out.println("hello Joe!");
-
-        /*
-		String home = "C:\\Jun\\Picture\\Mi5S\\DCIM\\Camera\\2018\\new3\\";
+		String home = "";
+		if(args.length != 1){
+			System.err.println("Parameters Number: " + args.length);
+			System.err.println("Parameter Pattern is not correct: only accept one paramenter, please enter your pics folder path!");
+			return;
+		} else {
+			home = args[0];
+		}
+		
 		if(!home.endsWith(File.separator)){
 			home += File.separator;
 		}
 		StringBuilder target = new StringBuilder();
 		/*
-		 * int year = 2017; int month = 8; int days = getMaxDayByYearMonth(year,
-		 * month); for(int i = 1; i<days+1; i++){ target = home + File.separator
-		 * +getFolder(month, i); createDir(target); }
+		 * int year = 2017; int month = 8; 
+		 * int days = getMaxDayByYearMonth(year,month); 
+		 * for(int i = 1; i<days+1; i++){ 
+		 * 	target = home + File.separator + getFolder(month, i);
+		 *  createDir(target); 
+		 * }
 		 */
 
-        /*
 		Pattern pattern = Pattern.compile("^(IMG|VID|MTXX|PANO|Screenshot|faceu)([_-]?)((19|20)\\d\\d((0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])))\\2?\\w*\\.(jpg|mp4)$");
 		File file = new File(home);
 		Matcher matcher = pattern.matcher(home);
@@ -176,7 +183,6 @@ public class PicOrganizer {
 		} else {
 			System.err.println("--- Target doesn't exist: " + file.getName());
         }
-        */
 
 	}
 
