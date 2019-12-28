@@ -1,6 +1,5 @@
 # Compiled class file
 *.class
-.classpath
 
 # Log file
 *.log
@@ -37,6 +36,7 @@ dist
 # build
 
 # other
+.classpath
 .project
 .gradle
 .vscode
