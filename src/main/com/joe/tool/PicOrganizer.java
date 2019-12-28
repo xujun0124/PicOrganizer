@@ -126,13 +126,13 @@ public class PicOrganizer {
 			System.out.println(target + startFile.getName());
 			if (startFile.renameTo(new File(target + startFile.getName()))) {
 				System.out.println("File is moved successful!");
-				System.out.println(String.format("文件移动成功！源：《%s》 目标路径：%s", source, target));
+				System.out.println(String.format("文件移动成功！源：%s，目标路径：%s", source, target));
 			} else {
 				System.out.println("File is failed to move!");
-				System.out.println(String.format("文件移动失败！源：《%s》 ", source));
+				System.out.println(String.format("文件移动失败！源：%s", source));
 			}
 		} catch (Exception e) {
-			System.err.println(String.format("文件移动异常！源：《%s》 至目标路径：%s", source, target));
+			System.err.println(String.format("文件移动异常！源：%s 至目标路径：%s", source, target));
 
 		}
 	}
