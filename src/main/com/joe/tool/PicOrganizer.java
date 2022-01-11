@@ -99,10 +99,8 @@ public class PicOrganizer {
 	/**
 	 * 获得某个月最大天数
 	 * 
-	 * @param year
-	 *            年份
-	 * @param month
-	 *            月份 (1-12)
+	 * @param year  年份
+	 * @param month 月份 (1-12)
 	 * @return 某个月最大天数
 	 */
 	public static int getMaxDayByYearMonth(int year, int month) {
@@ -139,30 +137,30 @@ public class PicOrganizer {
 
 	public static void main(String[] args) throws IOException {
 
-		String home = "";
-		if(args.length != 1){
+		String home = "/Users/i530994/Documents/Jun/Picture/N8/DCIM/Camera/2021";
+		if (args.length != 1) {
 			System.err.println("Parameters Number: " + args.length);
-			System.err.println("Parameter Pattern is not correct: only accept one paramenter, please enter your pics folder path!");
-			return;
+			System.err.println(
+					"Parameter Pattern is not correct: only accept one paramenter, please enter your pics folder path!");
+			// return;
 		} else {
 			home = args[0];
 		}
-		
-		if(!home.endsWith(File.separator)){
+
+		if (!home.endsWith(File.separator)) {
 			home += File.separator;
 		}
 		StringBuilder target = new StringBuilder();
 		/*
-		 * int year = 2017; int month = 8; 
-		 * int days = getMaxDayByYearMonth(year,month); 
-		 * for(int i = 1; i<days+1; i++){ 
-		 * 	target = home + File.separator + getFolder(month, i);
-		 *  createDir(target); 
-		 * }
+		 * int year = 2017; int month = 8; int days = getMaxDayByYearMonth(year,month);
+		 * for(int i = 1; i<days+1; i++){ target = home + File.separator +
+		 * getFolder(month, i); createDir(target); }
 		 */
 
-		Pattern pattern = Pattern.compile("^(IMG|VID|MTXX|PANO|Screenshot|faceu)([_-]?)((19|20)\\d\\d((0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])))\\2?\\w*\\.(jpg|mp4)$");
+		Pattern pattern = Pattern.compile(
+				"^(IMG|VID|MTXX|PANO|Screenshot|faceu)([_-]?)((19|20)\\d\\d((0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])))\\2?\\w*\\.(jpg|mp4)$");
 		File file = new File(home);
+
 		Matcher matcher = pattern.matcher(home);
 		if (file.exists()) {
 			File[] files = file.listFiles();
@@ -182,8 +180,22 @@ public class PicOrganizer {
 			}
 		} else {
 			System.err.println("--- Target doesn't exist: " + file.getName());
-        }
+		}
 
+		/*
+		if (file.exists()) {
+			File[] files = file.listFiles();
+			for (File f : files) {
+				if (f.isDirectory()) {
+					File[] subFiles = f.listFiles();
+					for (File subfile : subFiles) {
+						System.out.println("--- moving " + subfile.getName());
+						moveFile(subfile.getAbsolutePath(), home);
+					}
+				}
+			}
+		}
+		*/
 	}
 
 }
